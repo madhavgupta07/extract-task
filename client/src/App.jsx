@@ -4,9 +4,6 @@ import DailyView from './components/DailyView';
 import ResultView from './components/ResultView'; // Corrected import path if needed
 import './index.css';
 
-// API URL - uses environment variable in production, empty for same-domain deployment
-const API_URL = import.meta.env.VITE_API_URL || '';
-
 // Simple UUID generator
 function uuidv4() {
   return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
@@ -29,7 +26,7 @@ function App() {
     }
 
     // Init User
-    fetch(`${API_URL}/api/users/init`, {
+    fetch('http://localhost:5000/api/users/init', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ deviceId: id })
@@ -42,7 +39,7 @@ function App() {
   }, []);
 
   const checkStatus = (id = deviceId) => {
-    fetch(`${API_URL}/api/habit/status?deviceId=${id}`)
+    fetch(`http://localhost:5000/api/habit/status?deviceId=${id}`)
       .then(res => res.json())
       .then(data => {
         if (data.status === 'setup') {

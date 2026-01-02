@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 
-// API URL - uses environment variable in production, empty for same-domain deployment
-const API_URL = import.meta.env.VITE_API_URL || '';
-
 const habits = ['Sleep', 'Walk', 'Water', 'Read', 'Meditate'];
 
 export default function SetupView({ onStart, deviceId }) {
@@ -16,7 +13,7 @@ export default function SetupView({ onStart, deviceId }) {
 
         setLoading(true);
         try {
-            const response = await fetch(`${API_URL}/api/habit/start`, {
+            const response = await fetch('http://localhost:5000/api/habit/start', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
