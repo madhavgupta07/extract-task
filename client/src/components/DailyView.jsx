@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import API_URL from '../config/api';
 
 export default function DailyView({ user, onUpdate, deviceId }) {
     const [step, setStep] = useState('question'); // 'question' | 'reason'
@@ -17,7 +18,7 @@ export default function DailyView({ user, onUpdate, deviceId }) {
 
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:5000/api/habit/log', {
+            const response = await fetch(`${API_URL}/api/habit/log`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

@@ -3,6 +3,7 @@ import SetupView from './components/SetupView';
 import DailyView from './components/DailyView';
 import ResultView from './components/ResultView'; // Corrected import path if needed
 import './index.css';
+import API_URL from './config/api';
 
 // Simple UUID generator
 function uuidv4() {
@@ -26,7 +27,7 @@ function App() {
     }
 
     // Init User
-    fetch('http://localhost:5000/api/users/init', {
+    fetch(`${API_URL}/api/users/init`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ deviceId: id })
@@ -39,7 +40,7 @@ function App() {
   }, []);
 
   const checkStatus = (id = deviceId) => {
-    fetch(`http://localhost:5000/api/habit/status?deviceId=${id}`)
+    fetch(`${API_URL}/api/habit/status?deviceId=${id}`)
       .then(res => res.json())
       .then(data => {
         if (data.status === 'setup') {

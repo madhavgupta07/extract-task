@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import API_URL from '../config/api';
 
 const habits = ['Sleep', 'Walk', 'Water', 'Read', 'Meditate'];
 
@@ -13,7 +14,7 @@ export default function SetupView({ onStart, deviceId }) {
 
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:5000/api/habit/start', {
+            const response = await fetch(`${API_URL}/api/habit/start`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

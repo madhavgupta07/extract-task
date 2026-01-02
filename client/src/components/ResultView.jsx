@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import API_URL from '../config/api';
 
 export default function ResultView({ deviceId, onRestart }) {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/habit/summary?deviceId=${deviceId}`)
+        fetch(`${API_URL}/api/habit/summary?deviceId=${deviceId}`)
             .then(res => res.json())
             .then(setData);
     }, [deviceId]);
