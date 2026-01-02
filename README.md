@@ -148,6 +148,54 @@ Open your browser and navigate to `http://localhost:5173`
 
 ---
 
+## 🌐 Deploying to Vercel
+
+This app is configured for one-click deployment to Vercel with serverless API functions.
+
+### Prerequisites
+
+1. **MongoDB Atlas Account** (free tier works)
+   - Create a cluster at [mongodb.com/atlas](https://www.mongodb.com/atlas)
+   - Get your connection string
+
+2. **Vercel Account** (free tier works)
+   - Sign up at [vercel.com](https://vercel.com)
+
+### Deployment Steps
+
+```bash
+# 1. Install Vercel CLI
+npm install -g vercel
+
+# 2. Login to Vercel
+vercel login
+
+# 3. Deploy from project root
+cd daily-reality-check-mern
+vercel
+```
+
+### Environment Variables
+
+After deployment, set these in the **Vercel Dashboard** → Project Settings → Environment Variables:
+
+| Variable | Value | Description |
+|----------|-------|-------------|
+| `MONGODB_URI` | `mongodb+srv://...` | Your MongoDB Atlas connection string |
+
+### Project Structure for Vercel
+
+```
+daily-reality-check-mern/
+├── api/
+│   └── index.js          # Serverless API (auto-detected by Vercel)
+├── client/               # React frontend (built to client/dist)
+└── vercel.json           # Vercel configuration
+```
+
+
+---
+
 ## 📡 API Reference
 
 ### Base URL

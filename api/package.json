@@ -1,0 +1,10 @@
+{
+  "name": "daily-reality-check-api",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.1"
+  }
+}

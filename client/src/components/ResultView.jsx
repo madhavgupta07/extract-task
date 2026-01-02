@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
+// API URL - uses environment variable in production, empty for same-domain deployment
+const API_URL = import.meta.env.VITE_API_URL || '';
 export default function ResultView({ deviceId, onRestart }) {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/habit/summary?deviceId=${deviceId}`)
+        fetch(`${API_URL}/api/habit/summary?deviceId=${deviceId}`)
             .then(res => res.json())
             .then(setData);
     }, [deviceId]);

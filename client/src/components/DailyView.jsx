@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+// API URL - uses environment variable in production, empty for same-domain deployment
+const API_URL = import.meta.env.VITE_API_URL || '';
 export default function DailyView({ user, onUpdate, deviceId }) {
     const [step, setStep] = useState('question'); // 'question' | 'reason'
     const [didIt, setDidIt] = useState(null);
@@ -17,7 +19,7 @@ export default function DailyView({ user, onUpdate, deviceId }) {
 
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:5000/api/habit/log', {
+            const response = await fetch(`${API_URL}/api/habit/log`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
